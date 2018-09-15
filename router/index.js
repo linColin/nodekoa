@@ -1,10 +1,10 @@
 const Router = require('koa-router')
-const home = require('./home')
+const resume = require('./r-resume')
 const user = require('./user')
 
 let router = new Router()
 
-router.use(home)
+router.use(resume)
 router.use('/user', user)
 
 module.exports = router.routes()
