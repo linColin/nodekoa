@@ -4,7 +4,7 @@ const user = require('./user')
 
 let router = new Router()
 
-router.use(resume)
+router.use('/admin/v1', resume)
 router.use('/user', user)
 
 module.exports = router.routes()

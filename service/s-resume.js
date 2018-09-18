@@ -1,7 +1,7 @@
 let resume = require('../db/d-resume')
 
-async function getH (query) {
-  let a = await resume.getMsg(query)
+async function getH (key) {
+  let a = await resume.getMsg(key)
   return a
 }
 

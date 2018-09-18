@@ -3,8 +3,8 @@ const Sequelize = require('sequelize')
 
 
 
-async function getMsg(query) {
-  let sqlStr = `SELECT * FROM users LEFT JOIN user_flows ON users.id=user_flows.id;`
+async function getMsg(key) {
+  let sqlStr = `SELECT * FROM users INNER JOIN user_flows ON users.id=user_flows.id and users.key = ${key};`
   return await Model.query(sqlStr, { type: Model.QueryTypes.SELECT})
 }
 
