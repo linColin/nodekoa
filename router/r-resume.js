@@ -17,8 +17,8 @@ router.get('/resume/:key', async (ctx, next) => {
   await resume(key).then(res => {
     res.education = JSON.parse(res.education)
     res.skill = JSON.parse(res.skill)
-    res.work = JSON.parse(res.work)
-    res.projects = JSON.parse(res.projects)
+    // res.work = JSON.parse(res.work)
+    // res.projects = JSON.parse(res.projects)
     res.pro = JSON.parse(res.pro)
     ctx.body = {
       code: 200,
