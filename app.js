@@ -3,6 +3,7 @@ const static = require('koa-static')
 const router = require('./router/index')
 const authCheck = require('./middle/auth-check')
 const corsConfig = require('./middle/cors-config')
+const koaBody = require('koa-body')
 // const http = require('http')
 // const https = require('https')
 // const fs = require('fs')
@@ -15,6 +16,7 @@ app
 .use(static('assets'))     // 静态资源
 .use(static('www'))        // 文件资源
 .use(corsConfig)           // 跨越设置
+.use(koaBody())            // 解析请求体
 // .use(authCheck)            // 登录校验
 .use(router)               // 路由
 
