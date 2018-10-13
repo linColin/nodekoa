@@ -7,11 +7,25 @@ async function getCardList(key) {
   return await Model.query(sqlStr, { type: Model.QueryTypes.SELECT})
 }
 
+var User = Model.define('users', {
+  name: Sequelize.STRING,
+  age: Sequelize.INTEGER(3),
+  gender: Sequelize.STRING(2),
+  mobile: Sequelize.STRING(12),
+  email: Sequelize.STRING(50),
+  addrr: Sequelize.STRING(50),
+  hukou: Sequelize.STRING(10),
+  avatar_url: Sequelize.STRING(255),
+  resume_key: Sequelize.STRING(100),
+  wx_key: Sequelize.STRING(100)
+});
 // 添加用户
 async function addUser(params) {
-  console.log('12323', params)
-  // let sqlStr = `INSERT INTO users SET name = ${params.name}, wx_key=${params.wx_key}`
-  // return await Model.query(sqlStr, { type: Model.QueryTypes.SELECT})
+  let a = User.create({
+      name: params.name,
+      wx_key: params.wx_key
+  })
+  return a
 }
 // 
 module.exports = {
