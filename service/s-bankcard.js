@@ -5,9 +5,25 @@ async function getCardList (key) {
   return a
 }
 
-async function addUser (key) {
-  let a = await resume.addUser(key)
-  return a
+async function addUser (params) {
+  let user = await resume.getUser(params.wx_key)
+  let result = ''
+  if (!user[0]) {
+    await resume.addUser(params).then(res => {
+      result = {
+        code: 200,
+        msg: '添加成功'
+      }
+    }).catch(err => {
+      result = err
+    })
+  } else {
+    result = {
+      code: 200,
+      msg: '已存在'
+    }
+  }
+  return result
 }
 
 module.exports = {

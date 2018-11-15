@@ -13,12 +13,13 @@ var User = Model.define('users', {
   gender: Sequelize.STRING(2),
   mobile: Sequelize.STRING(12),
   email: Sequelize.STRING(50),
-  addrr: Sequelize.STRING(50),
+  addr: Sequelize.STRING(50),
   hukou: Sequelize.STRING(10),
   avatar_url: Sequelize.STRING(255),
   resume_key: Sequelize.STRING(100),
   wx_key: Sequelize.STRING(100)
 });
+
 // 添加用户
 async function addUser(params) {
   let a = User.create({
@@ -27,8 +28,18 @@ async function addUser(params) {
   })
   return a
 }
-// 
+// 查询用户
+async function getUser(wxKey) {
+  let a = User.findAll({
+    where:{
+      'wx_key': wxKey
+    }
+  })
+  return a
+}
+
 module.exports = {
   getCardList,
-  addUser
+  addUser,
+  getUser
 }
